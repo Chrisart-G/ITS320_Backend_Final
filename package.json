@@ -1,0 +1,25 @@
+{
+  "name": "its320_final_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chrisart-G/ITS320_Final_Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chrisart-G/ITS320_Final_Backend/issues"
+  },
+  "homepage": "https://github.com/Chrisart-G/ITS320_Final_Backend#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.3",
+    "nodemon": "^3.1.10"
+  }
+}
