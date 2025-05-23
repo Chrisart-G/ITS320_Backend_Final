@@ -1,9 +1,9 @@
 // Middleware/auth.js
-const jwt = require('jsonwebtoken');
-const User = require('../Model/User');
+import jwt from 'jsonwebtoken';
+import User from '../Model/User.js';
 
 // Protect routes
-exports.protect = async (req, res, next) => {
+export const protect = async (req, res, next) => {
   let token;
 
   // Check for token in headers

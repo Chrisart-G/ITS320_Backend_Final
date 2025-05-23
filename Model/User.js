@@ -1,6 +1,6 @@
-
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+// Model/User.js
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Password is required'],
     minlength: [6, 'Password must be at least 6 characters long'],
-    select: false 
+    select: false // Don't return password in queries by default
   },
   createdAt: {
     type: Date,
@@ -27,13 +27,15 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-
+// Hash password before saving
 userSchema.pre('save', async function(next) {
-
+  // Only hash the password if it has been modified (or is new)
   if (!this.isModified('password')) return next();
   
   try {
+    // Generate salt
     const salt = await bcrypt.genSalt(10);
+    // Hash password with salt
     this.password = await bcrypt.hash(this.password, salt);
     next();
   } catch (error) {
@@ -48,4 +50,4 @@ userSchema.methods.matchPassword = async function(enteredPassword) {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;
